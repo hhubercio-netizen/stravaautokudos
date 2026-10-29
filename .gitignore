@@ -1,0 +1,26 @@
+# Sekrety — NIGDY nie commitować
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Narzędzia
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Dane lokalne
+*.db
+*.sqlite3
+logs/
+.spike/
