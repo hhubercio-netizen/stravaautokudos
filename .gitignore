@@ -21,6 +21,7 @@ build/
 htmlcov/
 
 # Dane lokalne
+data/
 *.db
 *.sqlite3
 logs/

@@ -230,8 +230,7 @@ def print_report(activities: list[FeedActivity]) -> None:
         print(f"[{index}] {status} — {activity.athlete_name}")
         print(f"    {activity.title}")
         print(
-            f"    {activity.sport} | {activity.distance} | "
-            f"{activity.moving_time} | {activity.when}"
+            f"    {activity.sport} | {activity.distance} | {activity.moving_time} | {activity.when}"
         )
         print(f"    {activity.kudos_count} | {activity.url}")
         print()

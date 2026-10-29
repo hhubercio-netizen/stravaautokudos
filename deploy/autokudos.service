@@ -1,0 +1,35 @@
+[Unit]
+Description=Strava AutoKudos (single run)
+Documentation=https://github.com/hhubercio-netizen/stravaautokudos
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=autokudos
+Group=autokudos
+WorkingDirectory=/opt/autokudos
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+EnvironmentFile=/etc/autokudos/autokudos.env
+ExecStart=/opt/autokudos/.venv/bin/autokudos run --live --config /etc/autokudos/config.yaml
+StateDirectory=autokudos
+StateDirectoryMode=0700
+TimeoutStartSec=15min
+Nice=10
+UMask=0077
+
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/autokudos
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native

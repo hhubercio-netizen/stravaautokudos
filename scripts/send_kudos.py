@@ -15,7 +15,6 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 from bs4 import BeautifulSoup
-
 from list_feed import USER_AGENT, current_athlete_id, load_cookie
 
 DASHBOARD_URL = "https://www.strava.com/dashboard"
@@ -133,7 +132,9 @@ def main() -> int:
     after = kudos_info(args.activity_id, cookie)
     print("Po:", json.dumps(after, ensure_ascii=False))
 
-    athlete_ids = {str(athlete.get("id_str") or athlete.get("id")) for athlete in after.get("athletes", [])}
+    athlete_ids = {
+        str(athlete.get("id_str") or athlete.get("id")) for athlete in after.get("athletes", [])
+    }
     if after.get("kudosable") is False or (me and me in athlete_ids):
         print("SUKCES: kudos dodany.")
         return 0

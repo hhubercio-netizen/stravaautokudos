@@ -1,0 +1,14 @@
+[Unit]
+Description=Periodic Strava AutoKudos
+Documentation=https://github.com/hhubercio-netizen/stravaautokudos
+
+[Timer]
+Unit=autokudos.service
+OnBootSec=3min
+OnUnitActiveSec=45min
+RandomizedDelaySec=120
+AccuracySec=1min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

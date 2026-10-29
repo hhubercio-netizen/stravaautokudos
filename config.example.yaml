@@ -1,22 +1,28 @@
 # Skopiuj do config.yaml (plik jest w .gitignore) i uzupełnij.
 app:
   timezone: Europe/Warsaw
+  # true = zawsze dry-run, nawet z flagą --live. Ustaw false dopiero po testach.
   dry_run: true
   log_level: INFO
+  # Względna ścieżka jest liczona od katalogu pliku config.yaml.
+  database: data/autokudos.db
 
 schedule:
   every_minutes: 45
+  # Okno lokalne. Poza nim bot kończy przebieg bez wysyłki.
   active_hours: "07:00-23:00"
 
 targets:
   mode: whitelist
   include:
-    - id: 123456789
-      name: "Imię Nazwisko"
+    - id: 141888360
+      name: "Oskar Kotzian"
+    - id: 171997323
+      name: "Damian Huminiak"
   exclude: []
 
 rules:
-  sports: [Run, Ride, VirtualRide, Walk, Hike, Swim]
+  sports: [Run, Ride, VirtualRide, VirtualRun, Walk, Hike, Swim]
   min_distance_km: 0
   max_age_hours: 36
   skip_own: true
@@ -25,6 +31,7 @@ rules:
 limits:
   max_per_run: 10
   max_per_day: 60
+  # Losowa pauza między kolejnymi kudos w jednym przebiegu (sekundy).
   delay_seconds: [25, 90]
   stop_on_403: true
   max_consecutive_errors: 3
@@ -33,3 +40,4 @@ notify:
   telegram:
     enabled: false
     chat_id: ""
+    bot_token_env: TELEGRAM_BOT_TOKEN
