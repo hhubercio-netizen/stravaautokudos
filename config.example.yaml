@@ -1,0 +1,35 @@
+# Skopiuj do config.yaml (plik jest w .gitignore) i uzupełnij.
+app:
+  timezone: Europe/Warsaw
+  dry_run: true
+  log_level: INFO
+
+schedule:
+  every_minutes: 45
+  active_hours: "07:00-23:00"
+
+targets:
+  mode: whitelist
+  include:
+    - id: 123456789
+      name: "Imię Nazwisko"
+  exclude: []
+
+rules:
+  sports: [Run, Ride, VirtualRide, Walk, Hike, Swim]
+  min_distance_km: 0
+  max_age_hours: 36
+  skip_own: true
+  skip_if_kudosed: true
+
+limits:
+  max_per_run: 10
+  max_per_day: 60
+  delay_seconds: [25, 90]
+  stop_on_403: true
+  max_consecutive_errors: 3
+
+notify:
+  telegram:
+    enabled: false
+    chat_id: ""
